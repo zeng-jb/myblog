@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(~{::title})">
+  <title>时间轴</title>
+</head>
+<body>
+
+  <!--导航-->
+  <nav th:replace="_fragments::menu(3)" class="ui inverted gird-header">
+
+  </nav>
+
+  <!--时间轴内容-->
+  <div class="doc-container m-padded-tb-massivex m-opacity" id="doc-container">
+    <th:block >
+      <section class="timeline">
+        <ul>
+
+          <li class="" th:each="blog : ${blogs}">
+            <div>
+              <time th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020/01/01</time>
+              <div class="scientist" >
+                <a href="#"  th:href="@{/blog/{id}(id=${blog.id})}">
+                  <h3 class="state" style="text-align:center;font-size: 16px;color: #000;" th:text="${blog.title}">文章标题</h3>
+                </a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+    </th:block>
+  </div>
+
+
+
+  <!--底部栏-->
+  <footer th:replace="_fragments::footer" class="ui inverted vertical segment m-padded-tb-massive m-opacity">
+    <!--容器-->
+
+  </footer>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script src="../static/lib/timeline/timeline.js" th:src="@{/lib/timeline/timeline.js}"></script>
+  <th:block th:replace="_fragments::countTime"></th:block>
+
+  <script>
+
+    // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+
+  </script>
+</body>
+</html>

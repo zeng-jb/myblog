@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/_fragments :: head(~{::title})">
+  <title>博客管理</title>
+</head>
+<body>
+
+<!--导航栏-->
+<nav th:replace="admin/_fragments :: menu(0)" class="ui inverted gird-header" >
+
+</nav>
+
+<br>
+<br>
+<br>
+
+  <!--中间内容-->
+  <div  class="m-padded-tb-massivex">
+    <div class="ui container">
+      <div class="ui success large  message">
+        <p align="center">念念不忘，必有回响</p>
+      </div>
+
+      <img src="../../static/images/backimg.jpg" th:src="@{/images/backimg.jpg}" alt="" class="ui rounded bordered fluid image">
+    </div>
+  </div>
+
+<!--底部栏-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive m-opacity">
+  <!--容器-->
+</footer>
+
+<th:block th:replace="_fragments::script"></th:block>
+<th:block th:replace="_fragments::countTime"></th:block>
+
+<script>
+
+
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+      on : 'hover'
+    });
+
+  </script>
+</body>
+</html>
